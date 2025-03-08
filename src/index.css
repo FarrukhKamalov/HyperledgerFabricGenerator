@@ -1,0 +1,179 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #6366f1;
+  --primary-dark: #4f46e5;
+  --secondary: #10b981;
+  --accent: #8b5cf6;
+  --background-light: #f9fafb;
+  --background-dark: #111827;
+  --card-light: #ffffff;
+  --card-dark: #1f2937;
+  --text-light: #1f2937;
+  --text-dark: #f3f4f6;
+}
+
+.dark {
+  --primary: #818cf8;
+  --primary-dark: #6366f1;
+  --secondary: #34d399;
+}
+
+@layer base {
+  body {
+    @apply transition-colors duration-200;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/10 dark:bg-white/5 backdrop-blur-md border border-white/20 dark:border-white/10 shadow-lg;
+  }
+  
+  .neo-card {
+    @apply bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow duration-300;
+  }
+  
+  .gradient-button {
+    @apply bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-medium rounded-lg transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-[1.02];
+  }
+  
+  .sidebar-icon {
+    @apply relative flex items-center justify-center h-12 w-12 mt-2 mb-2 mx-auto shadow-lg bg-gray-800 dark:bg-gray-700 text-indigo-500 dark:text-indigo-400 hover:bg-indigo-600 dark:hover:bg-indigo-600 hover:text-white rounded-xl transition-all duration-200 ease-linear cursor-pointer;
+  }
+  
+  .sidebar-tooltip {
+    @apply absolute w-auto p-2 m-2 min-w-max left-14 rounded-md shadow-md text-white bg-gray-900 text-xs font-bold transition-all duration-200 scale-0 origin-left;
+  }
+  
+  .sidebar-icon:hover .sidebar-tooltip {
+    @apply scale-100;
+  }
+  
+  .sidebar-expanded {
+    @apply w-64;
+  }
+  
+  .sidebar-collapsed {
+    @apply w-20;
+  }
+  
+  .page-transition {
+    @apply transition-all duration-300 ease-in-out;
+  }
+  
+  .hover-scale {
+    @apply transition-transform duration-200 hover:scale-[1.02];
+  }
+  
+  .floating-label-input {
+    @apply block w-full px-4 py-3 text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400;
+  }
+  
+  .floating-label {
+    @apply absolute left-3 -top-2.5 px-1 text-sm text-gray-600 dark:text-gray-400 bg-white dark:bg-gray-800 transition-all duration-200;
+  }
+  
+  .status-badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  
+  .status-badge-success {
+    @apply bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200;
+  }
+  
+  .status-badge-warning {
+    @apply bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200;
+  }
+  
+  .status-badge-error {
+    @apply bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200;
+  }
+  
+  .status-badge-info {
+    @apply bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200;
+  }
+  
+  .skeleton {
+    @apply animate-pulse bg-gray-200 dark:bg-gray-700 rounded;
+  }
+  
+  .network-node {
+    @apply transition-all duration-300 hover:shadow-lg;
+  }
+  
+  .network-edge {
+    @apply transition-all duration-300;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-100 dark:bg-gray-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 dark:bg-gray-600 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400 dark:bg-gray-500;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 24;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s ease-in-out;
+}
+
+.animate-dash {
+  stroke-dasharray: 12, 12;
+  animation: dash 1s linear infinite;
+}
+
+/* ReactFlow custom styles */
+.react-flow__node {
+  @apply transition-transform duration-200 hover:scale-105;
+}
+
+.react-flow__edge-path {
+  @apply transition-all duration-200;
+}
+
+.react-flow__controls {
+  @apply !bg-white/80 dark:!bg-gray-800/80 !shadow-lg !rounded-lg !backdrop-blur-sm;
+}
+
+.react-flow__controls-button {
+  @apply !border-gray-200 dark:!border-gray-700 !bg-white/90 dark:!bg-gray-800/90 !text-gray-700 dark:!text-gray-300 hover:!bg-gray-100 dark:hover:!bg-gray-700;
+}
+
+.react-flow__minimap {
+  @apply !bg-white/80 dark:!bg-gray-800/80 !rounded-lg !shadow-lg !backdrop-blur-sm;
+}
